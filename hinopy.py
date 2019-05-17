@@ -29,6 +29,11 @@ def make_output(afilename, aoutputlist):
 	f.flush()
 	f.close()
 
+#入力データを行列だと思って、その行列を転置する操作が結構あります。
+#そのための関数です。
+def t(alist)
+	return list(map(list,(zip(*alist))))
+
 #モーラ数を判断する関数
 #カタカナは非対応です。出力はモーラ単位に分割されたもののリスト。
 def make_mora(astring):
