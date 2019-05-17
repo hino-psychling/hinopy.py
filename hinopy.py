@@ -31,7 +31,7 @@ def make_output(afilename, aoutputlist):
 
 #入力データを行列だと思って、その行列を転置する操作が結構あります。
 #そのための関数です。
-def t(alist)
+def t(alist):
 	return list(map(list,(zip(*alist))))
 
 #モーラ数を判断する関数
@@ -59,8 +59,10 @@ def make_fusion(alist):
             tmp_list_index[tmp_num][1].append(x[1])
     return tmp_list_index
 
-#list内容唯一性判断について
+#list内容唯一性判断について（中身もリスト）
 #入力リストの中の重複しているものを除去する関数、ただ、順番が壊されてしまいます。
+#sample input:[[大学, 名詞, 334],[大学, 名詞, 334],[学校, 名詞, 1334]]
+#sample output:[[大学, 名詞, 334],[学校, 名詞, 1334]]
 def make_unique(alist):
 	aresult = list(set(['\t'.join(x) for x in alist]))
 	aresult = [x.split() for x in aresult]
