@@ -87,7 +87,7 @@ def get_nttfreq(aword, changeint = False):
 	global dict_nttfreq_created
 	if dict_nttfreq_created == False:
 		print('dict_nttfreq、作成中、少々お待ち下さい！')
-		dict_path = [x for x in sys.path if x[-9:] == 'hinopy.py'][0] + '\\dicts\\nttfreq.dict'
+		dict_path = [x for x in sys.path if x.split('\\')[-1][:9] == 'hinopy.py'][0] + '\\dicts\\nttfreq.dict'
 		f = open(dict_path, 'r', encoding='utf-8')
 		global dict_nttfreq
 		dict_nttfreq = eval(f.read())
