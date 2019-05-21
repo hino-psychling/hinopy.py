@@ -107,3 +107,5 @@ def get_nttfreq(aword, changeint=False):
     if changeint is True:
         aresult = int(aresult)
     return aresult
+
+# これからHOMOPHのコマンドを追加します
