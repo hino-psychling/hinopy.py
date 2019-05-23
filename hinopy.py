@@ -8,6 +8,7 @@ import sys
 print('日野ゼミ常用コマンド集合でございます！')
 # グローバル変数変数について、グッグル先生に聞いてください
 dict_nttfreq_created = False
+re_imported = False
 
 
 # 日野ゼミでは、よくcsv形式で実験項目を保存しています。また実験結果は,間隔で保存することも多いんです。
@@ -97,7 +98,9 @@ def get_nttfreq(aword, changeint=False):
     global dict_nttfreq_created
     if dict_nttfreq_created is False:
         print('dict_nttfreq、作成中、少々お待ち下さい！')
-        dict_path = [x for x in sys.path if x.split('\\')[-1][:9] == 'hinopy.py'][0] + '\\dicts\\nttfreq.dict'
+        dict_path = [
+            x for x in sys.path if x.split('\\')[-1][:9] == 'hinopy.py'
+        ][0] + '\\dicts\\nttfreq.dict'
         f = open(dict_path, 'r', encoding='utf-8')
         global dict_nttfreq
         dict_nttfreq = eval(f.read())
@@ -108,4 +111,41 @@ def get_nttfreq(aword, changeint=False):
         aresult = int(aresult)
     return aresult
 
-# これからHOMOPHのコマンドを追加します
+
+# 入力した文字列はひらかなのみであるかどうかをチェックする関数
+def is_pure_hiragana(astring):
+    global re_imported
+    if re_imported is False:
+        import re
+        global re
+        re_imported = True
+    aresult = True
+    if ''.join(re.findall('[ぁ-ん]+', astring)) != astring:
+        aresult = False
+    return aresult
+
+
+# 入力した文字列はカタカナのみであるかどうかをチェックする関数
+def is_pure_katakana(astring):
+    global re_imported
+    if re_imported is False:
+        import re
+        global re
+        re_imported = True
+    aresult = True
+    if ''.join(re.findall('[ァ-ン]+', astring)) != astring:
+        aresult = False
+    return aresult
+
+
+# 入力した文字列は漢字のみであるかどうかをチェックする関数
+def is_pure_kanji(astring):
+    global re_imported
+    if re_imported is False:
+        import re
+        global re
+        re_imported = True
+    aresult = True
+    if ''.join(re.findall('[一-龥]+', astring)) != astring:
+        aresult = False
+    return aresult
