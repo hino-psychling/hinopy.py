@@ -12,7 +12,7 @@ re_imported = False
 dict_nttfreq = None
 
 
-class hinopy:
+class Hinopy:
 
     def __init__(self):
         self.dict_nttfreq = None
@@ -111,7 +111,7 @@ class hinopy:
             f = open(dict_path, 'r', encoding='utf-8')
             self.dict_nttfreq = eval(f.read())
             f.close()
-        aresult = self.dict_nttfreq.get(aword, '0')
+        aresult = dict_nttfreq.get(aword, '0')
         if changeint is True:
             aresult = int(aresult)
         return aresult
