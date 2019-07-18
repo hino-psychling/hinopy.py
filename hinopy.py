@@ -406,7 +406,7 @@ def get_all(word_list, header=None, simple_output=True):
     word_list = [[s] for s in word_list]
     for ope in header:
         for item in word_list:
-            item.append(operator.get(ope, lambda str: 'None')(item[0]))
+            item.append(operator.get(ope, lambda s: 'None')(item[0]))
     # 出力をもっとキレイに見えるため、表記と発音を別々にバラす
     word_list = [l[0].split() + l[1:] for l in word_list]
     if simple_output is not True:
